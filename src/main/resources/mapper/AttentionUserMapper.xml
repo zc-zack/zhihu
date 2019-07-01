@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xmut.zhihu.mapper.AttentionUserMapper">
+  <resultMap id="BaseResultMap" type="com.xmut.zhihu.entity.AttentionUser">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="attentio_uid" jdbcType="INTEGER" property="attentioUid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.xmut.zhihu.entity.AttentionUser">
+    insert into t_attentionUser (id, uid, attentio_uid
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{attentioUid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmut.zhihu.entity.AttentionUser">
+    insert into t_attentionUser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="attentioUid != null">
+        attentio_uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="attentioUid != null">
+        #{attentioUid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

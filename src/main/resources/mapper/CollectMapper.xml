@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xmut.zhihu.mapper.CollectMapper">
+  <resultMap id="BaseResultMap" type="com.xmut.zhihu.entity.Collect">
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="classify" jdbcType="VARCHAR" property="classify" />
+  </resultMap>
+  <insert id="insert" parameterType="com.xmut.zhihu.entity.Collect">
+    insert into t_collect (cid, pid, uid, 
+      classify)
+    values (#{cid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{classify,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmut.zhihu.entity.Collect">
+    insert into t_collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="classify != null">
+        classify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null">
+        #{classify,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
